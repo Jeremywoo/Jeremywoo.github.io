@@ -15,7 +15,7 @@ tags:
 ## 介绍
 ### 什么是机器学习
 
-1. Arthur Samuel：“不用显示编程而让计算机具备学习能力的研究领域。”
+1. Arthur Samuel：“不用显式编程而让计算机具备学习能力的研究领域。”
 2. Tom Mitchell：“ 一个程序被认为能从经验E中学习，解决任务 T，达到性能度量值P，当且仅当，有了经验E后，经过P评判，程序在处理T时的性能有所提升。”
 
 通常来说机器学习问题可以被划分为两大类：监督学习与无监督学习。
@@ -61,11 +61,11 @@ tags:
 
 $$ J(\theta_0,\theta_1)=\frac{1}{2m}\sum_{i=1}^{m}(\hat{y}_i-y_i)^2=\frac{1}{2m}\sum_{i=1}^{m}(h_{\theta}(x_i)-y_i)^2 $$
 
-将之拆分开来看就是\\(\frac{1}{2}\bar{x}\\)，其中\\(\bar{x}\\)就是\\(h_\theta(x_i)-y_i\\)的方差，也就是预测值与实际值之间的差。
+将之拆分开来看就是\\(\frac{1}{2}\bar{x}\\)，其中\\(\bar{x}\\)就是\\(h_\theta(x_i)-y_i\\)的平方的平均值，也就是预测值与实际值之间的差。
 
-这个函数也叫做“平方差函数”，或者叫做“平均方差”。平均值取(\\(\frac{1}{2}\\))是为了梯度下降计算的方便，平方的导数可以与\\(\frac{1}{2}\\)抵消掉。下图简要说明了代价函数做了什么:![](http://wuyangmbb.github.io/img/in-post/machine_learning/coursera_stanford_andrew_ng/week1/what_cost_function_does.png)
+这个函数也叫做“平方误差函数”，或者叫做“均方差”。平均值取(\\(\frac{1}{2}\\))是为了梯度下降计算的方便，平方的导数可以与\\(\frac{1}{2}\\)抵消掉。下图简要说明了代价函数做了什么:![](http://wuyangmbb.github.io/img/in-post/machine_learning/coursera_stanford_andrew_ng/week1/what_cost_function_does.png)
 
-### 代价函数-直观感受I
+### 代价函数-直观解释I
 如果就我们所见的来讲，训练数据集离散地分布在x-y平面上，我们尝试找出一条直线（由\\(h_\theta(x)\\)定义），让这条直线穿过这些离散的数据点。
 我们的目的就是得到一条最佳的直线。那么怎么定义这条最佳直线呢？也就是这些离散的点在垂直方向上到这条直线的距离的平方的平均值最小。最理想的情况就是这条直线穿过所有这些点，在这种情况下\\(J(\theta_0,\theta_1)\\)等于0。下图展示了理想情况下代价函数为0的例子：![](http://wuyangmbb.github.io/img/in-post/machine_learning/coursera_stanford_andrew_ng/week1/cost_function_of_1.png)
 
@@ -75,7 +75,7 @@ $$ J(\theta_0,\theta_1)=\frac{1}{2m}\sum_{i=1}^{m}(\hat{y}_i-y_i)^2=\frac{1}{2m}
 
 因此作为目标，我们应该最小化代价函数。在本例中，\\(\theta_1=1\\)就是我们的目标最小值。
 
-### 代价函数-直观感受II
+### 代价函数-直观解释II
 等值线图是由许多等值线组成的图。有两个变量的函数的等值线在在同一条线上的所有点对应的值都是相等的。如下图右图所示：![](http://wuyangmbb.github.io/img/in-post/machine_learning/coursera_stanford_andrew_ng/week1/contour_plot.png)
 
 同一颜色的线所得到的代价函数的值都相同。例如图中同一条绿色线上的三个点的\\(J(\theta_0,\theta_1)\\)值都相同。右图中绿色带圈的X点表示左图中直线(\\(\theta_0=800,\theta_1=-0.15\\))所对应的代价函数值。取另一个\\(h(x)\\)并绘制其等值线图，得到如下图所示：![](http://wuyangmbb.github.io/img/in-post/machine_learning/coursera_stanford_andrew_ng/week1/contour_plot_2.png)
@@ -100,7 +100,7 @@ $$\theta_j:=\theta_j-\alpha\frac{\partial}{\partial\theta_j}J(\theta_0,\theta_1)
 
 在每一次迭代中，应该同步更新参数\\(\theta_0,\theta_1,,...,\theta_n\\)。如果先更新前一个参数然后代入更新下一个参数将会出错，如图所示：![](http://wuyangmbb.github.io/img/in-post/machine_learning/coursera_stanford_andrew_ng/week1/simultaneously_update.png)
 
-### 梯度下降直观感受
+### 梯度下降直观解释
 为了对梯度下降有更直观地感受，我们忽略参数\\(\theta_0\\)，只保留\\(\theta_1\\)，于是我们可以得到如下方程，并尝试对其进行迭代直到收敛：
 
 $$\theta_1:=\theta_1-\alpha\frac{d}{d\theta_1}J(\theta_1)$$
@@ -109,7 +109,7 @@ $$\theta_1:=\theta_1-\alpha\frac{d}{d\theta_1}J(\theta_1)$$
 
 从另一方面说明，我们应该调整我们参数\\(\alpha\\)使得梯度下降算法在合理的时间内收敛。收敛失败或者收敛时间太长都表明\\(\alpha\\)的不合理。![](http://wuyangmbb.github.io/img/in-post/machine_learning/coursera_stanford_andrew_ng/week1/gradient_descent_about_alpha.png)
 
-#### 所以在步进值\\(\alpha\\)固定的情况下我们的梯度下降是如何收敛的呢？
+#### 所以在步进值\\(\alpha\\)固定的情况下梯度下降是如何收敛的呢？
 收敛的直观感受就是\\(\frac{d}{d\theta_1}J(\theta_1)=0\\)，也就是说我们的凸函数\\(J(\theta_1)\\)达到最小值（\\(J(\theta_1)\\)始终为凸函数）。在最小值处导数始终为0，于是我们得到：
 
 $$\theta_1:=\theta_1-\alpha*0$$
