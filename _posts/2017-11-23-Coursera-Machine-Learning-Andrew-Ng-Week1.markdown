@@ -4,7 +4,7 @@ title:      "Coursera吴恩达机器学习Week1"
 subtitle:   "Machine Learning on Coursera by Andrew Ng Week1"
 date:       2017-11-23 01:11:00
 author:     "MBB"
-header-img: "http://wuyangmbb.github.io/img/in-post/real-time-rendering/the-graphics-rendering-pipeline/background.png"
+header-img: "img/in-post/machine_learning/coursera_stanford_andrew_ng/week1/post_bg.jpg"
 header-mask: 0.3
 catalog:    true
 tags:

@@ -4,7 +4,7 @@ title:      "图形渲染管线"
 subtitle:   "The Graphics Rendering Pipeline"
 date:       2017-09-19 00:45:00
 author:     "MBB"
-header-img: "img/in-post/real-time-rendering/the-graphics-rendering-pipeline/background.png"
+header-img: "img/in-post/real-time-rendering/the-graphics-rendering-pipeline/background.jpg"
 header-mask: 0.3
 catalog:    true
 tags:
